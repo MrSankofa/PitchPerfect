@@ -18,15 +18,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        stopRecordingButton.isEnabled = false
+        recordButton.isEnabled = true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 
     @IBAction func recordAudio(_ sender: Any) {
         print("Record Button was Pressed")
         recordLabel.text = "Recording In Progress"
+        stopRecordingButton.isEnabled = true
+        recordButton.isEnabled = false
     }
     @IBAction func stopRecording(_ sender: Any) {
         print("Stop Recording Button Was Pressed")
         recordLabel.text = "Tap To Record"
+        stopRecordingButton.isEnabled = false
+        recordButton.isEnabled = true
     }
     
 }
