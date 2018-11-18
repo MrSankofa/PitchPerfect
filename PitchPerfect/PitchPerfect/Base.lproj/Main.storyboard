@@ -34,7 +34,7 @@
                                 <state key="normal" image="Stop"/>
                                 <connections>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ukl-eJ-IV4"/>
-                                    <segue destination="Lhg-q6-grt" kind="show" id="ihT-hb-90g"/>
+                                    <segue destination="Lhg-q6-grt" kind="show" id="46W-0J-gOW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap To Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdq-2e-jqh">
