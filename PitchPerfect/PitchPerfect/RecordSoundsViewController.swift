@@ -22,6 +22,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         stopRecordingButton.isEnabled = false
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear called")
+    }
 
     @IBAction func recordAudio(_ sender: Any) {
         print("Record Button was Pressed")
@@ -35,7 +40,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let filePath = URL(string: pathArray.joined(separator: "/"))
         
         let session = AVAudioSession.sharedInstance()
-        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
+        try! session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
         
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
         audioRecorder.delegate = self
@@ -43,12 +48,16 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         audioRecorder.prepareToRecord()
         audioRecorder.record()
     }
+    
     @IBAction func stopRecording(_ sender: Any) {
         print("Stop Recording Button Was Pressed")
         recordLabel.text = "Tap To Record"
         stopRecordingButton.isEnabled = false
         recordButton.isEnabled = true
     }
-    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        print("finished recording")
+        performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+    }
 }
 
